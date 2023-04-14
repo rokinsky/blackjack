@@ -7,3 +7,12 @@ export function shuffleArray(array) {
   }
   return newArray;
 }
+
+function test0() {
+  const array = [0, 1, 2];
+  const result = shuffleArray(array);
+  console.assert(result.length === array.length);
+  console.assert(array[0] === 0 && array[1] === 1 && array[2] === 2);
+}
+
+test0();
