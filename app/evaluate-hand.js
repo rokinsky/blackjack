@@ -1,6 +1,8 @@
 import { sum } from './lib/sum.js';
 import { cartesian } from "./lib/cartesian.js";
 import { Rank } from "./ranks.js";
+import { cardOf } from "./card.js";
+import { Suit } from "./suits.js";
 
 const rankValues = {
   [Rank.ace]: [1, 11],
@@ -28,3 +30,69 @@ export function evaluateHand(hand) {
   const candidates = sums.filter((value) => value <= BlackJack);
   return Math.max(...candidates);
 }
+
+function test0() {
+  const hand = [];
+  const result = evaluateHand(hand);
+  console.assert(result === 0);
+}
+
+function test1() {
+  const hand = [cardOf(Rank.ace, Suit.hearts)];
+  const result = evaluateHand(hand);
+  console.assert(result === 11);
+}
+
+function test2() {
+  const hand = [cardOf(Rank.jack, Suit.hearts)];
+  const result = evaluateHand(hand);
+  console.assert(result === 10);
+}
+
+function test3() {
+  const hand = [
+    cardOf(Rank.ace, Suit.hearts),
+    cardOf(Rank.ace, Suit.diamonds),
+    cardOf(Rank.ace, Suit.clubs),
+    cardOf(Rank.ace, Suit.spades)
+  ];
+  const result = evaluateHand(hand);
+  console.assert(result === 14);
+}
+
+function test4() {
+  const hand = [
+    cardOf(Rank.ace, Suit.hearts),
+    cardOf(Rank.jack, Suit.hearts)
+  ];
+  const result = evaluateHand(hand);
+  console.assert(result === BlackJack);
+}
+
+function test5() {
+  const hand = [
+    cardOf(Rank.jack, Suit.hearts),
+    cardOf(Rank.ten, Suit.spades),
+    cardOf(Rank.ace, Suit.spades)
+  ];
+  const result = evaluateHand(hand);
+  console.assert(result === BlackJack);
+}
+
+function test6() {
+  const hand = [
+    cardOf(Rank.jack, Suit.hearts),
+    cardOf(Rank.two, Suit.hearts),
+    cardOf(Rank.ten, Suit.hearts)
+  ];
+  const result = evaluateHand(hand);
+  console.assert(result === Bust);
+}
+
+test0();
+test1();
+test2();
+test3();
+test4();
+test5();
+test6();
