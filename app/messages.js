@@ -7,3 +7,9 @@ export function anotherCardMessage(playerHand) {
     message: "Would you like to take another card?",
   });
 }
+
+export function dealerHandMessage(dealerHand) {
+  return prettify({
+    dealerHand: evaluatedHandToString(dealerHand),
+  });
+}
