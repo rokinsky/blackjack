@@ -1,0 +1,5 @@
+import { ranks } from "./ranks.js";
+import { suits } from "./suits.js";
+import { cardOf } from './card.js';
+
+export const deckOfCards = ranks.flatMap((rank) => suits.map((suit) => cardOf(rank, suit)));

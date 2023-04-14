@@ -1,9 +1,8 @@
-import { ranks } from "./ranks.js";
-import { suits } from "./suits.js";
+import { deckOfCards } from "./deck.js";
+import { prettify } from "./lib/prettify.js";
 
 function main() {
-  alert(ranks)
-  alert(suits)
+  alert(prettify(deckOfCards));
 }
 
 main();
