@@ -1,11 +1,12 @@
 import { deckOfCards } from "./deck.js";
 import { Bust, evaluateHand } from "./evaluate-hand.js";
 import { evaluateRound } from "./evaluate-round.js";
+import { shuffleArray } from "./lib/shuffle-array.js";
 import { dealerHandMessage } from "./messages.js";
 import { dealerHitOrStand, play, playerHitOrStand } from "./play.js";
 
 function main() {
-  const deck = [...deckOfCards];
+  const deck = shuffleArray(deckOfCards);
 
   let dealerHand = [deck.pop()];
   let playerHand = [deck.pop(), deck.pop()];
