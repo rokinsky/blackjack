@@ -13,3 +13,23 @@ export function dealerHandMessage(dealerHand) {
     dealerHand: evaluatedHandToString(dealerHand),
   });
 }
+
+function roundOverStatusMessage(playerHand, dealerHand, status) {
+  return prettify({
+    playerHand: evaluatedHandToString(playerHand),
+    dealerHand: evaluatedHandToString(dealerHand),
+    status: status,
+  });
+}
+
+export function playerLosesMessage(playerHand, dealerHand) {
+  return roundOverStatusMessage(playerHand, dealerHand, "Player loses");
+}
+
+export function playerWinsMessage(playerHand, dealerHand) {
+  return roundOverStatusMessage(playerHand, dealerHand, "Player wins");
+}
+
+export function playerNeitherWinsNorLosesMessage(playerHand, dealerHand) {
+  return roundOverStatusMessage(playerHand, dealerHand, "Player neither wins nor loses");
+}
