@@ -1,6 +1,6 @@
 import { deckOfCards } from "./deck.js";
 import { Bust, evaluateHand } from "./evaluate-hand.js";
-import { evaluatedHandToString } from "./hand.js";
+import { evaluateRound } from "./evaluate-round.js";
 import { dealerHandMessage } from "./messages.js";
 import { dealerHitOrStand, play, playerHitOrStand } from "./play.js";
 
@@ -18,11 +18,8 @@ function main() {
     dealerHand = play(deck, dealerHand, dealerHitOrStand);
   }
 
-  const playerResult = evaluatedHandToString(playerHand);
-  alert(playerResult);
-
-  const dealerResult = evaluatedHandToString(dealerHand);
-  alert(dealerResult);
+  const result = evaluateRound(playerHand, dealerHand);
+  alert(result);
 }
 
 main();
